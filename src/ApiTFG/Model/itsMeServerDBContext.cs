@@ -9,7 +9,7 @@ namespace ApiTFG
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-            optionsBuilder.UseNpgsql(@"Host=127.0.0.1;Port=5432;Database=itsMeServerDB;Username=postgres;Password=1234;");
+            optionsBuilder.UseNpgsql(@"Host=127.0.0.1;Port=5432;Database=itsMeServerDB;Username=postgres;Password=1234");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -95,6 +95,8 @@ namespace ApiTFG
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasDefaultValueSql("nextval('\"User_id_seq\"'::regclass)");
+
+                entity.Property(e => e.Age).HasColumnName("age");
 
                 entity.Property(e => e.BluetoothMac)
                     .IsRequired()

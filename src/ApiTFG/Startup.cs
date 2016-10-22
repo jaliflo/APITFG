@@ -44,7 +44,7 @@ namespace ApiTFG
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
             app.UseWebSockets();
-            app.Use(async (http, next) =>
+            /*app.Use(async (http, next) =>
             {
                 ChatRequestManager requestsManager = new ChatRequestManager();
 
@@ -103,7 +103,7 @@ namespace ApiTFG
                 {
                     await next();
                 }
-            });
+            });*/
         }
     }
 }

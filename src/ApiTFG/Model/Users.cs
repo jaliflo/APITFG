@@ -23,6 +23,7 @@ namespace ApiTFG
         public string FilmsTastes { get; set; }
         public string ReadingTastes { get; set; }
         public string BluetoothMac { get; set; }
+        public int Age { get; set; }
 
         public virtual ICollection<Chat> ChatUserRequestNavigation { get; set; }
         public virtual ICollection<Chat> ChatUserRequestedNavigation { get; set; }

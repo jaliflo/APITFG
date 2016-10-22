@@ -77,7 +77,28 @@ namespace ApiTFG.Controllers
 
             dbContext.Users.Add(user);
             dbContext.SaveChanges();
-            return new ObjectResult(user);
+            return new ObjectResult(user); 
+        }
+
+        //POST: Get users simililar parameters
+        [HttpPost("getUsersComp")]
+        public IActionResult GetUsersComp([FromBody] Users user)
+        {
+            List<Users> users = dbContext.Users.ToList();
+            Users contactedUser = null;
+
+            foreach(Users useri in users)
+            {
+                if(useri.Name == user.Name)
+                {
+                    contactedUser = useri;
+                }
+            }
+
+            contactedUser.BluetoothMac = null;
+            contactedUser.Password = null;
+
+            return new ObjectResult(contactedUser);
         }
 
         //PUT: Update user
