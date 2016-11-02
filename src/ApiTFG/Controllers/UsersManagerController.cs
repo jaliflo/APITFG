@@ -65,7 +65,7 @@ namespace ApiTFG.Controllers
             {
                 return NoContent();
             }
-
+            
             List<Users> users = dbContext.Users.ToList();
             foreach(Users useri in users)
             {

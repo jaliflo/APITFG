@@ -73,6 +73,8 @@ namespace ApiTFG.Controllers
 
     public class NearbyUsers
     {
+        public const int AGE_RANGE = 5;
+
         public Dictionary<Users, Int32> nearbyUsers;
 
         public NearbyUsers()
@@ -85,6 +87,11 @@ namespace ApiTFG.Controllers
             Users calculateUser = nearbyUsers.ElementAt(pos).Key;
             int compatibility = nearbyUsers.ElementAt(pos).Value;
 
+            if(Math.Abs(calculateUser.Age - user.Age) <= 5)
+            {
+                compatibility += 25;
+            }
+
             if (calculateUser.CityAndCountry != "" && user.CityAndCountry != "")
             {
                 string[] cityandcountry1 = calculateUser.CityAndCountry.Split('-');
@@ -92,11 +99,11 @@ namespace ApiTFG.Controllers
 
                 if (cityandcountry1[0] == cityandcountry2[0])
                 {
-                    compatibility += 25;
+                    compatibility += 15;
                 }
                 else if (cityandcountry1[1] == cityandcountry2[1])
                 {
-                    compatibility += 10;
+                    compatibility += 5;
                 }
             }
 
@@ -104,7 +111,7 @@ namespace ApiTFG.Controllers
             {
                 if (calculateUser.Job == user.Job)
                 {
-                    compatibility += 15;
+                    compatibility += 12;
                 }
             }
 
@@ -118,11 +125,11 @@ namespace ApiTFG.Controllers
 
                 if (hobbies1.Length > hobbies2.Length)
                 {
-                    unityValue = 15 / hobbies1.Length;
+                    unityValue = 12 / hobbies1.Length;
                 }
                 else
                 {
-                    unityValue = 15 / hobbies2.Length;
+                    unityValue = 12 / hobbies2.Length;
                 }
 
                 for (int i = 0; i < hobbies1.Length; i++)
@@ -144,11 +151,11 @@ namespace ApiTFG.Controllers
 
                 if (musicaltastes1.Length > musicaltastes2.Length)
                 {
-                    unityValue = 15 / musicaltastes1.Length;
+                    unityValue = 12 / musicaltastes1.Length;
                 }
                 else
                 {
-                    unityValue = 15 / musicaltastes2.Length;
+                    unityValue = 12 / musicaltastes2.Length;
                 }
 
                 for (int i = 0; i < musicaltastes1.Length; i++)
@@ -170,11 +177,11 @@ namespace ApiTFG.Controllers
 
                 if (readingtastes1.Length > readingtastes2.Length)
                 {
-                    unityValue = 15 / readingtastes1.Length;
+                    unityValue = 12 / readingtastes1.Length;
                 }
                 else
                 {
-                    unityValue = 15 / readingtastes2.Length;
+                    unityValue = 12 / readingtastes2.Length;
                 }
 
                 for (int i = 0; i < readingtastes1.Length; i++)
@@ -196,11 +203,11 @@ namespace ApiTFG.Controllers
 
                 if (filmtastes1.Length > filmtastes2.Length)
                 {
-                    unityValue = 15 / filmtastes1.Length;
+                    unityValue = 12 / filmtastes1.Length;
                 }
                 else
                 {
-                    unityValue = 15 / filmtastes2.Length;
+                    unityValue = 12 / filmtastes2.Length;
                 }
 
                 for (int i = 0; i < filmtastes1.Length; i++)
