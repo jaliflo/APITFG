@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace ApiTFG
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseUrls("https://192.168.1.40:8080")
+                .UseUrls("https://192.168.1.38:8080")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
