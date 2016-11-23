@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
@@ -75,19 +75,19 @@ namespace ApiTFG.Controllers
     {
         public const int AGE_RANGE = 5;
 
-        public Dictionary<Users, Int32> nearbyUsers;
+        public Dictionary<Users, float> nearbyUsers;
 
         public NearbyUsers()
         {
-            nearbyUsers = new Dictionary<Users, int>();
+            nearbyUsers = new Dictionary<Users, float>();
         }
 
         public void CalculateCompatibility(int pos, Users user)
         {
             Users calculateUser = nearbyUsers.ElementAt(pos).Key;
-            int compatibility = nearbyUsers.ElementAt(pos).Value;
+            float compatibility = nearbyUsers.ElementAt(pos).Value;
 
-            if(Math.Abs(calculateUser.Age - user.Age) <= 5)
+            if(Math.Abs(calculateUser.Age - user.Age) <= 10)
             {
                 compatibility += 25;
             }
@@ -116,7 +116,7 @@ namespace ApiTFG.Controllers
             }
 
             string[] separator = new string[] { ", " };
-            int unityValue = 0;
+            float unityValue = 0;
 
             if (calculateUser.Hobbies != "" && user.Hobbies != "")
             {
@@ -125,11 +125,11 @@ namespace ApiTFG.Controllers
 
                 if (hobbies1.Length > hobbies2.Length)
                 {
-                    unityValue = 12 / hobbies1.Length;
+                    unityValue = (float) 12 / hobbies1.Length;
                 }
                 else
                 {
-                    unityValue = 12 / hobbies2.Length;
+                    unityValue = (float) 12 / hobbies2.Length;
                 }
 
                 for (int i = 0; i < hobbies1.Length; i++)
@@ -151,11 +151,11 @@ namespace ApiTFG.Controllers
 
                 if (musicaltastes1.Length > musicaltastes2.Length)
                 {
-                    unityValue = 12 / musicaltastes1.Length;
+                    unityValue = (float) 12 / musicaltastes1.Length;
                 }
                 else
                 {
-                    unityValue = 12 / musicaltastes2.Length;
+                    unityValue = (float) 12 / musicaltastes2.Length;
                 }
 
                 for (int i = 0; i < musicaltastes1.Length; i++)
@@ -177,11 +177,11 @@ namespace ApiTFG.Controllers
 
                 if (readingtastes1.Length > readingtastes2.Length)
                 {
-                    unityValue = 12 / readingtastes1.Length;
+                    unityValue = (float) 12 / readingtastes1.Length;
                 }
                 else
                 {
-                    unityValue = 12 / readingtastes2.Length;
+                    unityValue = (float) 12 / readingtastes2.Length;
                 }
 
                 for (int i = 0; i < readingtastes1.Length; i++)
@@ -203,11 +203,11 @@ namespace ApiTFG.Controllers
 
                 if (filmtastes1.Length > filmtastes2.Length)
                 {
-                    unityValue = 12 / filmtastes1.Length;
+                    unityValue = (float) 12 / filmtastes1.Length;
                 }
                 else
                 {
-                    unityValue = 12 / filmtastes2.Length;
+                    unityValue = (float) 12 / filmtastes2.Length;
                 }
 
                 for (int i = 0; i < filmtastes1.Length; i++)
@@ -222,7 +222,7 @@ namespace ApiTFG.Controllers
                 }
             }
 
-            nearbyUsers[calculateUser] = compatibility;
+            nearbyUsers[calculateUser] = float.Parse(compatibility.ToString("0"));
         }
     }
 }
